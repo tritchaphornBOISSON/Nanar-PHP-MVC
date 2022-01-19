@@ -1,0 +1,110 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    {% if session.user_id %}
+<div class="container container-admin" id="profile-page">
+    <h2 class="text-center display-5 mb-5">Bienvenue : {{ loggedinUser.username }}</h2>
+    <div class="container mb-5" id="info-user-profile">
+        <h2 class="text-center mb-3">Mes Info</h2>
+        <div class="info-user px-5 py-5">
+            <p><span class="fw-bold">Username : </span> {{ loggedinUser.username }}</p>
+            <p><span class="fw-bold">Email : </span> {{ loggedinUser.email }}</p>
+            <div class="mx-auto modify-profile">
+                <a class="btn btn-lg bg-light " href="/admin/show?id={{ movie.id }}"><i class="fas fa-tools"></i></i> Modifier</a>
+            </div>
+        </div>
+    </div>
+    <div class="py-5 bg-light px-5" id="favorite-profile-container">
+        <div class="container">
+            <h3 class="text-center">Mes Nanars Préferés</h3>
+            <div class="row row-cols-1 row-cols-sm-3 row-cols-md-5 gx-5 ">
+                {% for movie in movies %}
+                    <div class="col gy-5">
+                        <div class="card shadow-sm">
+                            <a href="/movie?id={{ movie.id }}">
+                                <img class="poster-favorite" src="data:image/jpeg;base64,{{ movie.poster}}" class="bd-placeholder-img card-img-top" width="100%" height="" alt="...">
+                            </a>
+                            <div class="card-body" style="display: flex">
+                                <h6 class="card-title">{{ movie.title }}</h6>
+                                <div class="ms-auto" id="profile-heart">
+                                    <a href="/movie/remove-favorite?id={{ movie.id }}" id="favorite-button"><i class="fas fa-heart" ></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <div class="container container-section">
+        <h3 class="text-center mb-5">Mes Commentaires : </h3>
+        <table class="table table-bordered table-lg align-middle ">
+            <thead>
+            <tr>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center" style="width: 35%">Nom du Nanar</th>
+                <th scope="col" class="text-center" style="width: 35%">Commentaires</th>
+                <th scope="col" colspan="2" class="text-center" style="width: 25%">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row" class="text-center">1</th>
+                <td>
+                    <div id="poster-thumnails-profile">
+                        <img src="/assets/images/5f26cbb3d9a02-eurotrip00.jpg" class="" alt="poster-movie">
+                        <h6 class="ms-3">Title</h6>
+                    </div>
+                </td>
+                <td  class="text-center">Comment</td>
+                <td class="text-center">
+                    <a class="btn btn-md btn-success text-white" href="/admin/show?id={{ movie.id }}"><i class="fas fa-search"></i> Voir</a>
+                </td>
+                <td class="text-center">
+                    <form action="/admin/delete" method="POST">
+                        <input type="hidden" name="id" value="{{ movie.id }}">
+                        <button class="btn btn-md btn-danger text-white"><i class="fas fa-trash-alt"></i> Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="container container-section">
+        <h3 class="text-center mb-5">Suggestion un Nanar</h3>
+        <div class="px-5 py-5 suggestion-profile-page">
+
+            <form action="" method="post">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Nom du Nanar : </label>
+                    <input name="title" type="text" class="form-control" id="exampleFormControlInput1" >
+                </div>
+                <div class="mb-3 row">
+                    <label for="exampleDataList" class="col-form-label">Catégorie :</label>
+                    <div class="">
+                        <input class="form-control" list="datalistOptions" id="exampleDataList" name="category" value="">
+                        <datalist id="datalistOptions">
+                            <option value="Comédie">
+                            <option value="Fantastique">
+                            <option value="Horreur">
+                            <option value="Action">
+                        </datalist>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Commentaire : </label>
+                    <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <div class="d-grid gap-2 col-4 mx-auto">
+                    <input type="submit" class="btn btn-lg bg-light" value="Envoyer">
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,63 @@
+
+<form method="post" class="row justify-content-md-center" enctype="multipart/form-data">
+	<div class="mb-3 row">
+	<label  for="exampleFormControlInput1" class="col-sm-2 col-form-label">Nom du Nanar :</label>
+		<div class="col-sm-10">
+			<span class="text-danger">{{ errors['title'] }}</span>
+			<input class="form-control" type="text" value="{{ movie.title }}" name="title">
+		</div>
+	</div>
+
+	<div class="mb-3 row align-items-center">
+		<label for="poster" class="col-sm-2 col-form-label">Image :</label>
+		<div class="col-sm-10">
+			<span class="text-danger">{{ errors['poster'] }}</span>
+			<input class="form-control" type="file" id="poster" name="poster" value="{{ movie.poster }}">
+		</div>
+	</div>
+	<div class="mb-3 row">
+		<label class="col-sm-2 col-form-label" for="typeURL">Bande d'annonces :</label>
+		<div class="col-sm-10">
+			<span class="text-danger">{{ errors['trailer'] }}</span>
+			<input id="typeURL" class="form-control" type="url" value="{{ movie.trailer }}" name="trailer">
+		</div>
+	</div>
+	<div class="mb-3 row">
+		<label for="exampleDataList" class="col-sm-2 col-form-label">Catégorie :</label>
+		<div class="col-sm-10">
+			<span class="text-danger">{{ errors['categories'] }}</span>
+			<input class="form-control" list="datalistOptions" id="exampleDataList" name="categories" value="{{ movie.categories }}">
+			<datalist id="datalistOptions">
+				<option value="Comédie">
+				<option value="Fantastique">
+				<option value="Horreur">
+				<option value="Action">
+			</datalist>
+		</div>
+	</div>
+	<div class="mb-3 row">
+		<label class="col-sm-2 col-form-label">Votes :</label>
+		<div class="col-sm-10">
+			<span class="text-danger">{{ errors['grade'] }}</span>
+			<select class="form-select" name="grade" aria-label="{{ movie.grade }}">
+				<option selected value=""> -- Choisir un vote -- </option>
+				<option value="1">*</option>
+				<option value="2">**</option>
+				<option value="3">***</option>
+				<option value="4">****</option>
+				<option value="5">*****</option>
+			</select>
+		</div>
+	</div>
+	<div class="mb-3 row">
+		<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Description:</label>
+		<div class="col-sm-10">
+			<span class="text-danger">{{ errors['description'] }}</span>
+			<textarea class="form-control" id="exampleFormControlTextarea1" rows="6" name="description" >{{ movie.description }}</textarea>
+		</div>
+	</div>
+	<div class="d-grid gap-2 col-4 mx-auto">
+		<input type="submit" class="btn btn-lg button-kaki text-white" value="Envoyer">
+	</div>
+
+</form>

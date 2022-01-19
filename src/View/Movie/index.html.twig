@@ -1,0 +1,133 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            {% for movie in movies %}
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %} class="active" {% endif %}></button>
+            {% endfor %}
+        </div>
+        <div class="carousel-inner">
+            {% for movie in movies %}
+                <div {% if loop.index0 == 0 %} class="carousel-item active" {% else %} class="carousel-item" {% endif %}>
+                    <img class="d-block w-100" alt="" src="data:image/jpeg;base64,{{ movie.poster}}"/>
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="container container-section">
+        <div class="row about-section">
+            <div class="col-md-6 col-sm-12">
+                <h1 class="about-title display-5">À propos : Where is Nanar? </h1>
+                <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi asperiores commodi consectetur, dicta dolorem enim et eum exercitationem expedita fugit ipsum iste molestiae nesciunt non nulla odit officiis provident quisquam quo repellendus suscipit voluptatem! Asperiores autem corporis culpa delectus dolorem, dolores eum inventore, nobis officia porro quod ratione tempora temporibus. Dolorum ducimus fuga illo illum itaque nam nemo sapiente sequi voluptas. Cupiditate ex explicabo omnis perferendis qui quis tempora ullam voluptate! Doloremque fuga impedit ipsa nam, nesciunt reprehenderit sed!</p>
+                </div>
+            <div class="col-md-6 col-sm-12" id="about-image-right">
+                <div class="col-12">
+                    <img src="/assets/images/1136_nanar.jpeg" alt="nanar characters">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container container-section top-three-section">
+        <h2 class="display-5">Top 3 Nanars</h2>
+        <div class="row top-three">
+            {% for topThreeMovie in topThreeMovies %}
+            <div class="col-4 col-md-4 col-sm-12 top3-image p-5 text-center" >
+                <a class="top-three-link" href="/movie?id={{ topThreeMovie.id }}"><img src="data:image/jpeg;base64,{{ topThreeMovie.poster}}" alt="top3-poster">
+                    <h4 class="text-center mt-3">{{ topThreeMovie.title }}</h4>
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <div class="container container-section">
+        <div class="p-3 mb-3 rounded-3 category-title-home">
+            <div class="container-fluid">
+                <h2 class="display-5 ">Nanar par catégorie</h2>
+            </div>
+        </div>
+        <div class="row align-items-md-stretch">
+            <div class="col-md-6 col-sm-12 p-3">
+                <div class="h-100 p-4 rounded-3 category-square">
+
+                        <div class="col-8 category-description">
+                            <a href="/categories" class="btn btn-lg mb-3"><i class="fas fa-angle-double-right"></i> Nanar : {{ comedyMovie.categories }}</a>
+                            <p class="px-4">Description: {{comedyMovie.description|length > 300 ? comedyMovie.description| slice(0,300) ~ '...' : comedyMovie.description}}</p>
+                        </div>
+                        <div class="col-4 category-image">
+                            <a href="/categories"><img src="data:image/jpeg;base64,{{ comedyMovie.poster}}" alt="category-poster"></a>
+                        </div>
+
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 p-3">
+                <div class="h-100 p-4 rounded-3 category-square">
+
+                    <div class="col-8 category-description">
+                        <a href="/categories" class="btn btn-lg mb-3"><i class="fas fa-angle-double-right"></i> Nanar : {{ fantasyMovie.categories }}</a>
+                        <p class="px-4">Description: {{comedyMovie.description|length > 300 ? comedyMovie.description| slice(0,300) ~ '...' : comedyMovie.description}}</p>
+                    </div>
+                    <div class="col-4 category-image">
+                        <a href="/categories"><img src="data:image/jpeg;base64,{{ fantasyMovie.poster}}" alt="category-poster"></a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 p-3">
+                <div class="h-100 p-4 rounded-3 category-square">
+
+                        <div class="col-8 category-description">
+                            <a href="/categories" class="btn btn-lg mb-3"><i class="fas fa-angle-double-right"></i> Nanar : {{ horrorMovie.categories }}</a>
+                            <p class="px-4">Description: {{comedyMovie.description|length > 300 ? comedyMovie.description| slice(0,300) ~ '...' : comedyMovie.description}}</p>
+                        </div>
+                        <div class="col-4 category-image">
+                            <a href="/categories"><img src="data:image/jpeg;base64,{{ horrorMovie.poster}}" alt="category-poster"></a>
+                        </div>
+
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 p-3">
+                <div class="h-100 p-4 rounded-3 category-square">
+
+                    <div class="col-8 category-description">
+                        <a href="/categories" class="btn btn-lg mb-3"><i class="fas fa-angle-double-right"></i> Nanar : {{ actionMovie.categories }}</a>
+                        <p class="px-4">Description: {{comedyMovie.description|length > 300 ? comedyMovie.description| slice(0,300) ~ '...' : comedyMovie.description}}</p>
+                    </div>
+                    <div class="col-4 category-image">
+                        <a href="/categories"><img src="data:image/jpeg;base64,{{ actionMovie.poster}}" alt="category-poster"></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container container-section" id="rss">
+    <h5 class="display-4 text-center pt-3">Flux RSS</h5>
+    <div class="container px-3 py-3" id="rss-detail">
+        <div class="row">
+            <div class="col-md-9">
+                <p class="">Si vous ne voulez manquer aucune mise à jour de notre site nanar, utilisez notre flux rss pour recevoir les nouveaux films ajoutés</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <a class="link-rss" href="/rss" target="_blank"><i class="fas fa-rss-square"></i></a>
+            </div>
+        </div>
+       </div>
+   </div>
+
+{% endblock %}

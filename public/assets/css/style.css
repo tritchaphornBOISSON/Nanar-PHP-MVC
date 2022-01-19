@@ -1,0 +1,398 @@
+/****** Colors principle *******/
+/*
+Yellow #F3C12C
+Kaki #80856D
+Grey #C4D6D3
+*/
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.button-kaki {
+    background-color: #80856D !important;
+}
+
+/********* Navbar ************/
+#logo-navbar {
+    width: 150px;
+    transition:all 1s;
+}
+.navbar-brand {
+    cursor:pointer;
+    position:relative;
+    padding:10px 20px;
+    background:rgb(209, 165, 36, 0.5);
+    font-size:28px;
+    border-top-right-radius:10px;
+    border-bottom-left-radius:10px;
+    transition:all 1s;
+}
+.navbar-brand:after,.navbar-brand:before{
+    content:" ";
+    width:20px;
+    height:20px;
+    position:absolute;
+    border :0px solid #fff;
+    transition:all 1s;
+}
+.navbar-brand:after{
+     top:-1px;
+     left:-1px;
+     border-top:5px solid black;
+     border-left:5px solid black;
+}
+.navbar-brand:before{
+     bottom:-1px;
+     right:-1px;
+     border-bottom:5px solid black;
+     border-right:5px solid black;
+}
+.navbar-brand:hover {
+    border-top-right-radius:0px;
+    border-bottom-left-radius:0px;
+}
+.navbar-brand:hover:after, .navbar-brand:hover:before {
+    width:100%;
+    height:100%;
+}
+.navbar {
+    background-color: #F3C12C;
+    height: 100px;
+    box-shadow: 0 4px 8px -2px;
+}
+a.nav-link {
+    color: black !important;
+    font-size: 20px;
+}
+a.navbar-brand {
+    margin-left: 20px;
+}
+
+.nav-item{
+    border:none;
+    position: relative;
+}
+.nav-item:hover{
+    border: none;
+}
+.nav-item::after{
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 4px;
+    left: 0%;
+    bottom:0;
+    background-color: black;
+    transition: all ease-in-out .2s;
+}
+.nav-item:hover::after{
+    width: 100%;
+    left: 0;
+}
+a.dropdown-item {
+    text-align: center;
+}
+/********* Content Homepage ************/
+.container-section {
+    margin: 120px 0px;
+}
+.carousel-item {
+    height: 80vh;
+}
+#about-image-right img {
+    max-width: 100%;
+}
+.about-title {
+    display: inline-block;
+    border-bottom: double 10px #F3C12C;
+}
+.top-three-section h2 {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 900;
+    text-shadow: 5px 5px 5px #f3c12c;
+}
+.top3-image img {
+    width: 25vw;
+    height: 35vw;
+    object-fit: cover;
+}
+.top-three-link {
+    text-decoration: none;
+    color: black;
+}
+.top-three-link h4 {
+    color: black !important;
+}
+.category-square {
+    display: flex;
+}
+.link-category {
+    display: flex;
+}
+.category-image {
+    position: relative;
+}
+.category-image img {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+.category-title-home {
+    text-align: center;
+    background-color: #F3C12C;
+}
+.category-description a {
+    font-size: 30px;
+    text-decoration: none;
+    color: white;
+    background-color: #80856D;
+}
+.category-square {
+    border: solid 5px #80856D;
+}
+#rss {
+    background-color: rgb(128, 133, 109, 30%);
+    width: 60%;
+    border-radius: 5px;
+}
+#rss-detail {
+    display: flex;
+}
+.link-rss {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+}
+i.fas.fa-rss-square {
+    font-size: 3em;
+    color: #ee802f;
+}
+
+/********* Footer ************/
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+}
+#footer {
+    background-color: #F3C12C;
+}
+#footer i {
+    font-size: 30px;
+}
+
+/********* Page Category ************/
+
+.container-flow{
+    align-content: center;
+}
+
+.poster-film-container img{
+    width: 275px;
+    height: 375px;
+    object-fit: cover;
+}
+
+.category-title {
+    text-align: center;
+    background-color: #F3C12C;
+}
+
+#Movies .card-body {
+    border: solid 5px #80856D;
+}
+
+.card-title {
+    margin-top: 10px;
+}
+
+.page-title {
+    font-size: 30px;
+    text-align: center;
+}
+
+
+/********** Single Movie page *********/
+
+/* formulaire + commentaires */
+
+.comments {
+    margin-top: 5%;
+    margin-left: 20px
+}
+
+.darker {
+    border: 1px solid #80856D;
+    background-color: #80856D;
+    float: right;
+    border-radius: 5px;
+    padding-left: 40px;
+    padding-right: 30px;
+    padding-top: 10px
+}
+
+.comment {
+    border: 1px solid #80856D;
+    background-color: #80856D;
+    float: left;
+    border-radius: 5px;
+    padding-left: 40px;
+    padding-right: 30px;
+    padding-top: 10px;
+}
+
+.comment h4,
+.comment span,
+.darker h4,
+.darker span {
+    display: inline
+}
+
+.comment p,
+.comment span,
+.darker p,
+.darker span {
+    color: rgb(184, 183, 183)
+}
+
+.container h4 {
+    color: #C4D6D3;
+    font-weight: bold;
+}
+
+label {
+    color: rgb(212, 208, 208)
+}
+
+#align-form {
+    margin-top: 20px
+}
+
+.form-group p a {
+    color: white
+}
+
+#darker img {
+    margin-right: 15px;
+    position: static
+}
+
+.form-group input,
+.form-group textarea {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 12px
+}
+
+#comment-form {
+    border: 1px solid #80856D;
+    background-color: #80856D;
+    border-radius: 5px;
+    padding: 20px
+}
+
+.form-group button {
+    margin-top: 15px;
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.form-group button:hover {
+    background-color: #f3c12c;
+}
+i.far.fa-heart, i.fas.fa-heart {
+    font-size: 3em;
+}
+.heart-button a{
+    color: #f3c12c;
+}
+
+/********* Admin Page ************/
+.container-admin {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.poster-singler img {
+    display: block;
+    margin: auto;
+}
+
+/********* Profile Page ************/
+#poster-thumnails-profile {
+    display: flex;
+    align-items: center;
+}
+#poster-thumnails-profile img {
+    width: 20%;
+}
+.suggestion-profile-page {
+    display: block;
+    margin: auto;
+    width: 70%;
+    background-color: #80856D;
+    border-radius: 5px;
+}
+.info-user {
+    display: block;
+    margin: auto;
+    width: 60%;
+    background-color: #80856D;
+    border-radius: 5px;
+    font-size: 20px;
+}
+.modify-profile {
+    text-align: center;;
+}
+.poster-favorite {
+    height: 250px;
+    object-fit: cover;
+}
+
+#profile-heart i {
+    font-size: 20px;
+    color: #f3c12c;
+}
+
+/******Register Page*****/
+.container-register{
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.create-account {
+    text-align: center;
+}
+#register-button {
+    text-decoration: none;
+    padding: 15px 10px;
+    background-color: #f3c12c;
+    border-radius: 5px;
+    color: black;
+    font-size: 16px;
+}
+/*****Javascript CSS*****/
+.pop-container{
+    display: none;
+    position:fixed;
+    max-width: 300px;
+    padding: 10px;
+    background-color:  #f3c12c;
+}
+
+.pop-container  .cancel{
+    background-color: red;
+}
+

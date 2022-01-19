@@ -1,0 +1,48 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+<div class="container container-admin" id="admin-page">
+    <h1 class="display-4 text-center">Tous nos Nanars </h1>
+    <div class="d-flex justify-content-end">
+        <a class="btn btn-lg button-kaki text-white mb-3" href="/admin/add"><i class="fas fa-plus"></i> Ajouter</a>
+    </div>
+
+    <div>
+        <table class="table table-bordered table-lg">
+            <thead class="table-active">
+                <tr>
+                    <th scope="col" class="text-center">#</th>
+                    <th scope="col" class="text-center">Nom du Nanar</th>
+                    <th scope="col" class="text-center">Voir</th>
+                    <th scope="col" class="text-center">Modifier</th>
+                    <th scope="col" class="text-center">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for movie in movies %}
+                    <th scope="row" class="text-center">{{ movie.id }}</th>
+                    <td class="text-center">{{ movie.title }}</td>
+                    <td class="text-center">
+                        <a class="btn btn-md btn-success text-white" href="/movie?id={{ movie.id }}"><i class="fas fa-search"></i> Voir</a>
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-md btn-primary text-white" href="/admin/edit?id={{ movie.id }}"><i class="fas fa-tools"></i> Modifier</a>
+                    </td>
+                    <td class="text-center">
+                        <form action="/admin/delete" method="POST">
+                            <input type="hidden" name="id" value="{{ movie.id }}">
+                            <button onclick="return myFunction()" class="btn btn-md btn-danger text-white"><i class="fas fa-trash-alt"></i> Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}

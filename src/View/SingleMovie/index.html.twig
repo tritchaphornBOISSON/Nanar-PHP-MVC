@@ -1,0 +1,73 @@
+{%extends 'layout.html.twig' %}
+
+{%block title %}{{ movie.title }}{% endblock %}
+
+{%block content %}
+   <div class="container py-4">
+      <div class="row align-items-md-stretch">
+         <div class="col-md-3">
+            <div class="h-100 p-5 text-white bg-light border rounded-3" class="movie-poster">
+               <!-- affichage de l'affiche du film sélectionner -->
+               <img src="data:image/jpeg;base64,{{ movie.poster }}" class="img-thumbnail" alt="poster du film"/>
+            </div>
+         </div>
+         <div class="col-md-9">
+            <div class="h-100 p-5 bg-light border rounded-3">
+               <!-- résumé du film -->
+               <div class="row align-items-md-stretch">
+                  <div class="col-md-5">
+                     <p class="text-start"> {{ movie.grade }} / 5</p>
+                     <p class="text-start"> {{ movie.id_vote }} </p>
+                     <h1 class="text-start"> {{ movie.title }} </h1>
+                  </div>
+                  <div class="col-md-7">
+                     <div class="heart-button float-end">
+                        <a href="/movie/add-to-favorite?id={{ movie.id }}" id="favorite-button"><i class="far fa-heart" ></i></a>
+                     </div>
+                  </div>
+               </div>
+               {{ movie.description }}
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Video Youtube -->
+      <div class="container">
+      <div class="ratio ratio-16x9">
+         <iframe src="{{ movie.trailer }}" title="YouTube video" allowfullscreen></iframe>
+      </div>
+      </div>
+   <!-- Section commentaires -->
+   <section>
+      <div class="container py-4">
+         <div class="row row align-items-md-stretch">
+            <div class="h-100 p-5 text-white bg-light border rounded-3" class="comment-section">
+               <div class="row align-items-md-stretch">
+                  {% for comment in comments %}
+                     <div class="comment mt-4 text-justify float-left"><img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
+                        <h4>{{ comment.username }}</h4> - <span>{{ comment.created_at }}</span>
+                        <p>{{ comment.comment }}</p>
+                  </div>
+               {% endfor %}
+               </div>
+            </div>
+            <div class="h-100 p-5 text-white bg-light border rounded-3" class="comment-section">
+               {%if session.user_id %}
+               <form id="comment-form" method="post">
+                  <div class="form-group">
+                     <label for="user-comment">Laissez un commentaire :</label>
+                     <textarea name="user-comment" id="user-comment" cols="30" rows="5" class="form-control"></textarea>
+                     {% if errors %}
+                        <p>{{ errors }}</p>
+                     {% endif %}
+                  </div>
+                  <div class="form-group"> <button type="submit" id="post" class="btn">Envoyer</button> </div>
+               </form>
+               {% else %}
+                  <a class="nav-link" href="/login"><i class="fas fa-user"></i>Se Connecter</a>
+               {% endif %}
+            </div>
+         </div>
+      </div>
+   </section>
+{%endblock %}

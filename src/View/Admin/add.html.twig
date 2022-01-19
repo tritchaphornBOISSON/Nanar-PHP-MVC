@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="container container-admin">
+    <div class="row justify-content-md-center">
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-lg button-kaki text-white mb-3" href="/admin"><i class="fas fa-undo-alt"></i> Retour</a>
+        </div>
+        <div class="mb-3 row">
+            <h5 class="display-5 text-center">Ajouter un Nanar</h5>
+        </div>
+        <div class="form-add-nanar w-75 align-items-center">
+            {% include 'Admin/_form.html.twig' %}
+        </div>
+    </div>
+</div>
+{% endblock %}

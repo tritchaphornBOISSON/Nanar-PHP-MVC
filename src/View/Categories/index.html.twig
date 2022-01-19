@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+    <section id="Movies">
+        <div class="container">
+            <div class="page-title">
+                <h2 class="display-5 my-4">Nanars par catégorie</h2>
+            </div>
+            <div class="row">
+                 {% for category in categories %}
+                     <div class="p-3 mb-3 rounded-3 category-title-home">
+                           <div class="container-fluid">
+                             <h2 class="display-5 ">{{category}}</h2>
+                         </div>
+                     </div>
+                        {% for movie in movies %}
+                                {% if movie.categories == category %}
+                                    <div class="col-md-3 col-sm-12 mb-3">
+                                        <div class="card-body">
+                                            <div class="poster-film-container">
+                                                <img src="data:image/jpeg;base64,{{movie.poster}}" alt="poster film"/>
+                                            </div>
+                                            <h5 class="card-title">{{movie.title}}</h5>
+                                            <p class="card-text">{{movie.description|length > 100 ? movie.description| slice(0,100) ~ '...' : movie.description}}</p>
+                                            <div class="lead"><a class="btn btn-warning btn-lg" href="/movie?id={{movie.id}}" role="button">détails</a></div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                        {% endfor %}
+                 {% endfor %}
+            </div>
+        </div>
+    </section>
+ 
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="container container-register">
+    <div class="row justify-content-md-center">
+        <div class="mb-3 row">
+            <h1 class="display-5 text-center">Créer un Compte</h1>
+        </div>
+        <div class="form-add-nanar w-75 align-items-center">
+            <form method="post" class="row justify-content-md-center" enctype="multipart/form-data">
+                <div class="mb-3 row justify-content-md-center">
+                    <label  for="exampleFormControlInput1" class="col-sm-2 col-form-label">Pseudo:</label>
+                    <div class="col-sm-5 ">
+                        <span class="text-danger">{{ errors['username'] }}</span>
+                        <input class="form-control" type="text" value="{{ user.username }}" name="username">
+                    </div>
+                </div>
+                <div class="mb-3 row justify-content-md-center">
+                    <label  for="exampleFormControlInput1" class="col-sm-2 col-form-label">Email:</label>
+                    <div class="col-sm-5">
+                        <span class="text-danger">{{ errors['email'] }}</span>
+                        <input class="form-control" type="email" value="{{ user.email }}" name="email">
+                    </div>
+                </div>
+                <div class="mb-3 row justify-content-md-center">
+                    <label  for="exampleFormControlInput1" class="col-sm-2 col-form-label">Mot de passe:</label>
+                    <div class="col-sm-5">
+                        <span class="text-danger">{{ errors['password'] }}</span>
+                        <input class="form-control" type="password" value="{{ user.password }}" name="password">
+                    </div>
+                </div>
+                <div class="mb-3 row justify-content-md-center">
+                    <label  for="exampleFormControlInput1" class="col-sm-2 col-form-label"> Confirmer votre Mot de passe:</label>
+                    <div class="col-sm-5">
+                        <span class="text-danger">{{ errors['confirmPassword'] }}</span>
+                        <input class="form-control" type="password" value="{{ user.confirmPassword }}" name="confirmPassword">
+                    </div>
+                </div>
+                <div class="d-grid gap-2 col-4 mx-auto">
+                    <input type="submit" class="btn btn-lg button-kaki text-white" value="Envoyer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
